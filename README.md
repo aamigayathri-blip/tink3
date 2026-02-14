@@ -70,15 +70,6 @@ pip install -r requirements.txt]
 [Run commands - uvicorn main:app --reload]
 ```
 
-### For Hardware:
-
-#### Components Required
-[List all components needed with specifications]
-
-#### Circuit Setup
-[Explain how to set up the circuit]
-
----
 
 ## Project Documentation
 
@@ -104,34 +95,9 @@ pip install -r requirements.txt]
 
 **Application Workflow:**
 
-![Workflow](docs/workflow.png)
-*Add caption explaining your workflow*
-
----
-
-### For Hardware:
-
-#### Schematic & Circuit
-
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
-
-#### Build Photos
-
-![Team](Add photo of your team here)
-
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
-
+![Workflow]([docs/workflow.png](https://docs.google.com/document/d/1laR5Tpjxm0bs0OdfNztjqIrWD8BRNTEXP43jQbYDT9Q/edit?usp=sharing))
+*FRONTEND LINK*
+https://tink3-liart.vercel.app/
 ---
 
 ## Additional Documentation
@@ -140,8 +106,8 @@ pip install -r requirements.txt]
 
 #### API Documentation
 
-**Base URL:** `https://api.yourproject.com`
-
+**Base URL:** `[https://api.yourproject.com](https://tink3-x7c2.onrender.com)`
+**FRONT END** `[https://api.yourproject.com](https://tink3-liart.vercel.app/)`
 ##### Endpoints
 
 **GET /api/endpoint**
@@ -364,7 +330,7 @@ python script.py -v --format json data.json
 ## Project Demo
 
 ### Video
-[Add your demo video link here - YouTube, Google Drive, etc.]
+[[Add your demo video link here - YouTube, Google Drive, etc](https://drive.google.com/drive/folders/1EPMB-aZQEvfZqKb9jBhMXTjagp74GQiw?usp=sharing).]
 
 *Explain what the video demonstrates - key features, user flow, technical highlights*
 
