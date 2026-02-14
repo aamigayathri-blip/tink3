@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Justicia - AI Legal Assistant</title>
+    <style>
+        /* --- THEME: Justice Blue & Legal Cream --- */
+        :root {
+            --primary-blue: #1A365D;   /* Deep Navy */
+            --accent-blue: #2B6CB0;    /* Trustworthy Blue */
+            --bg-cream: #FDFBF7;       /* Paper/Parchment feel */
+            --text-dark: #2D3748;
+            --text-light: #718096;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #FDFBF7; /* Fallback */
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Centers vertically */
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%; /* Mobile friendly */
+            max-width: 600px; /* FIXED: max-width (hyphen, not underscore) */
+            margin: 20px auto;
+        }
+
+        /* --- HEADER --- */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--primary-blue);
+            font-size: 2.8rem;
+            margin-bottom: 5px;
+            letter-spacing: -1px;
+            font-weight: 800;
+        }
+
+        .tagline {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        /* --- INPUT CARD --- */
+        .card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            border: 1px solid #E2E8F0;
+        }
+
+        label {
+            display: block;
+            color: var(--primary-blue);
+            font-weight: 700;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 15px;
+            border: 2px solid #E2E8F0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            resize: vertical;
+            box-sizing: border-box; 
+            transition: border-color 0.2s;
+            background-color: #FAFAFA;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            background-color: #FFFFFF;
+        }
+
+        .btn-group {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        button {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: white;
+            box-shadow: 0 4px 6px rgba(26, 54, 93, 0.2);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--accent-blue);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: #EDF2F7;
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-secondary:hover {
+            background-color: #E2E8F0;
+        }
+
+        /* --- RESULT SECTION --- */
+        #result-area {
+            margin-top: 30px;
+            display: none; 
+            animation: slideUp 0.4s ease-out;
+        }
+
+        .result-card {
+            background: var(--white);
+            border-left: 6px solid var(--accent-blue);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .section-badge {
+            background-color: #EBF8FF;
+            color: var(--primary-blue);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 15px;
+            border: 1px solid #BEE3F8;
+        }
+
+        h3 {
+            margin-top: 0;
+            color: var(--primary-blue);
+            font-size: 1.4rem;
+        }
+
+        .simplified-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        .disclaimer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #A0AEC0;
+            line-height: 1.4;
+        }
+
+        /* Loading Spinner */
+        .loader {
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top: 3px solid #ffffff;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: none;
+            margin: 0 auto;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Justicia</h1>
+            <div class="tagline">Your Sovereign AI Legal Companion</div>
+        </header>
+
+        <main class="card">
+            <label for="query">What is your legal situation?</label>
+            <textarea id="query" placeholder="Example: My landlord is refusing to return my deposit even though I gave proper notice..."></textarea>
+            
+            <div class="btn-group">
+                <button class="btn-secondary" onclick="alert('Voice Input is a premium feature available in the full version.')">
+                    🎤 Voice
+                </button>
+                <button class="btn-primary" onclick="getLegalAdvice()">
+                    <span id="btn-text">Get Advice</span>
+                    <div id="loader" class="loader"></div>
+                </button>
+            </div>
+        </main>
+
+        <!-- RESULT AREA -->
+        <div id="result-area">
+            <div class="result-card">
+                <span class="section-badge" id="law-section">Analyzing...</span>
+                <h3 id="law-title">Legal Insight</h3>
+                <p class="simplified-text" id="law-advice">
+                    ...
+                </p>
+                <hr style="border: 0; border-top: 1px solid #EEE; margin: 20px 0;">
+                <div style="font-size: 0.9rem; color: #718096; display: flex; justify-content: space-between;">
+                    <span><strong>Source:</strong> Bharatiya Nyaya Sanhita (2023)</span>
+                    <span><strong>Confidence:</strong> <span id="law-score">--</span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="disclaimer">
+            <strong>Disclaimer:</strong> Justicia is an AI prototype for informational purposes only.<br>
+            It is not a substitute for professional legal counsel. All data is processed locally.
+        </div>
+    </div>
+
+    <script>
+        async function getLegalAdvice() {
+            const queryText = document.getElementById('query').value;
+            const resultArea = document.getElementById('result-area');
+            const loader = document.getElementById('loader');
+            const btnText = document.getElementById('btn-text');
+
+            if (!queryText.trim()) {
+                alert("Please type your legal query first.");
+                return;
+            }
+
+            // UI Loading State
+            btnText.style.display = 'none';
+            loader.style.display = 'block';
+            resultArea.style.display = 'none';
+
+            try {
+                // IMPORTANT: This fetches from the Python backend we built earlier.
+                // Ensure 'uvicorn main:app --reload' is running in your terminal.
+                const response = await fetch('http://127.0.0.1:8000/consult', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        query_text: queryText,
+                        language: "en"
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Server error: ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                // Update UI with Data
+                if (data.status === 'success') {
+                    document.getElementById('law-section').textContent = data.matched_section;
+                    document.getElementById('law-title').textContent = data.legal_title;
+                    document.getElementById('law-advice').textContent = data.simplified_advice;
+                    
+                    // Convert score to percentage
+                    const percentage = (100 - (data.confidence_score * 10)).toFixed(1); 
+                    document.getElementById('law-score').textContent = "High Match";
+                    
+                    resultArea.style.display = 'block';
+                } else {
+                    alert("Our AI could not find a specific law for this query. Try adding more details.");
+                }
+
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Connection Error: Is the Justicia Backend running? (Run 'uvicorn main:app --reload')");
+            } finally {
+                // Reset UI
+                btnText.style.display = 'inline';
+                loader.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

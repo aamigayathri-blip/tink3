@@ -2,27 +2,27 @@
   <img src="./img.png" alt="Project Banner" width="100%">
 </p>
 
-# [Project Name] 🎯
+# [Justacia] 🎯
 
 ## Basic Details
 
-### Team Name: [Name]
+### Team Name: [Viking]
 
 ### Team Members
-- Member 1: [Name] - [College]
-- Member 2: [Name] - [College]
+- Member 1: [Gayathri Aami Soju] - [LBS institute of technology for women]
+
 
 ### Hosted Project Link
-[mention your project hosted link here]
+[https://github.com/aamigayathri-blip/tink.git]
 
 ### Project Description
-[2-3 lines about what your project does]
+[Justacia is an AI-powered legal awareness assistant built around India’s newly implemented criminal laws — the Bharatiya Nyaya Sanhita, Bharatiya Nagarik Suraksha Sanhita, and Bharatiya Sakshya Adhiniyam]
 
 ### The Problem statement
-[What problem are you solving?]
+[In India, justice is effectively priced out of reach for the common citizen. High legal fees, complex procedures, and a lack of data privacy create insurmountable barriers for the uneducated and women. Consequently, victims of small civil disputes often abandon their rights because the cost of hiring a lawyer exceeds the value of what was lost, leaving them vulnerable and without a remedy]
 
 ### The Solution
-[How are you solving it?]
+[JUstacia is a citizen-centric AI Legal Assistant designed to democratize access to justice in India. Unlike standard legal tools built for lawyers, this solution is architected specifically for the layman, the illiterate, and the marginalized. It acts as a bridge between the complex Indian legal code (specifically the new BNS, BNSS, and BSA) and the common citizen, providing instant, legally accurate, and actionable guidance]
 
 ---
 
@@ -31,10 +31,10 @@
 ### Technologies/Components Used
 
 **For Software:**
-- Languages used: [e.g., JavaScript, Python, Java]
-- Frameworks used: [e.g., React, Django, Spring Boot]
-- Libraries used: [e.g., axios, pandas, JUnit]
-- Tools used: [e.g., VS Code, Git, Docker]
+- Languages used: [Python ,Json,HTML]
+- Frameworks used: [FastAPI (Backend),HTML (Frontend)]
+- Libraries used: [numpy ,Uvicorn]
+- Tools used: [VS Code, Git,]
 
 **For Hardware:**
 - Main components: [List main components]
@@ -46,10 +46,10 @@
 ## Features
 
 List the key features of your project:
-- Feature 1: [Description]
-- Feature 2: [Description]
-- Feature 3: [Description]
-- Feature 4: [Description]
+- Feature 1: [DAI-based legal query interpretation]
+- Feature 2: [BNS/BNSS/BSA section mapping]
+- Feature 3: [Simplified explanation of complex laws]
+- Feature 4: [Clean and minimal user interface]
 
 ---
 
@@ -59,12 +59,15 @@ List the key features of your project:
 
 #### Installation
 ```bash
-[Installation commands - e.g., npm install, pip install -r requirements.txt]
+[Installation commands - 
+git clone https://github.com/aamigayathri-blip/tink.git
+cd tink
+pip install -r requirements.txt]
 ```
 
 #### Run
 ```bash
-[Run commands - e.g., npm start, python app.py]
+[Run commands - uvicorn main:app --reload]
 ```
 
 ### For Hardware:
@@ -96,7 +99,7 @@ List the key features of your project:
 
 **System Architecture:**
 
-![Architecture Diagram](docs/architecture.png)
+![User → html Frontend → FastAPI Backend → Legal Dataset → AI Logic → Response](docs/architecture.png)
 *Explain your system architecture - components, data flow, tech stack interaction*
 
 **Application Workflow:**
